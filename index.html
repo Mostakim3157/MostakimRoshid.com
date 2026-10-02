@@ -11,6 +11,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<script>if(!matchMedia("(prefers-reduced-motion: reduce)").matches)document.documentElement.classList.add("anim")</script>
 <style>
 /* Layout: centered hero with photo ring + role chips, boxed stats bar, then solid-card sections. Single dark "Ocean Blue" look. */
 :root{
@@ -177,6 +178,21 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px}
   footer .wrap{flex-direction:column;align-items:center;text-align:center;gap:4px}
 }
 @media (max-width:640px){.proj-grid,.notes{grid-template-columns:1fr}}
+/* animations: hero plays on load; everything marked .rv fades in once it scrolls into view (only when JS adds .anim and motion isn't reduced) */
+@keyframes rvUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+@keyframes rvCard{from{opacity:0;transform:translateY(36px) scale(.97)}to{opacity:1;transform:none}}
+@keyframes rvLeft{from{opacity:0;transform:translateX(-40px)}to{opacity:1;transform:none}}
+@keyframes rvRight{from{opacity:0;transform:translateX(40px)}to{opacity:1;transform:none}}
+@keyframes rvPop{from{opacity:0;transform:scale(.85)}to{opacity:1;transform:none}}
+.anim .hero .wrap>*{animation:rvUp .8s cubic-bezier(.2,.7,.2,1) backwards}
+.anim .hero .avatar{animation-name:rvPop}
+.anim .hero .wrap>:nth-child(2){animation-delay:.1s}.anim .hero .wrap>:nth-child(3){animation-delay:.2s}.anim .hero .wrap>:nth-child(4){animation-delay:.3s}
+.anim .hero .wrap>:nth-child(5){animation-delay:.4s}.anim .hero .wrap>:nth-child(6){animation-delay:.5s}.anim .hero .wrap>:nth-child(n+7){animation-delay:.6s}
+.anim .rv:not(.in){opacity:0}
+.anim .rv.in{animation:rvUp .75s cubic-bezier(.2,.7,.2,1) var(--d,0s) backwards}
+.anim .rv-card.in{animation-name:rvCard}
+.anim .rv-left.in{animation-name:rvLeft}
+.anim .rv-right.in{animation-name:rvRight}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important}html{scroll-behavior:auto}}
 </style>
 </head>
@@ -279,6 +295,34 @@ form.addEventListener('submit',async e=>{
   }
 });
 document.getElementById('year').textContent=new Date().getFullYear();
+// scroll reveal: tag targets, stagger siblings, reveal each once as it enters the viewport
+(()=>{
+  const root=document.documentElement;
+  if(!root.classList.contains('anim'))return;
+  const tag=(sel,cls,step)=>document.querySelectorAll(sel).forEach((el,i)=>{el.classList.add('rv',...(cls?[cls]:[]));if(step)el.style.setProperty('--d',Math.min(i,5)*step+'ms')});
+  tag('.sec-head');
+  tag('.stats','rv-card');
+  ['.about-grid','.exp-list','.skills','.proj-grid','.notes'].forEach(g=>tag(g+'>*','rv-card',110));
+  tag('.contact-grid>:first-child','rv-left');
+  tag('.contact-grid>form','rv-right');
+  const items=document.querySelectorAll('.rv');
+  if(!('IntersectionObserver' in window)){items.forEach(el=>el.classList.add('in'));return}
+  const io=new IntersectionObserver(es=>es.forEach(e=>{
+    if(!e.isIntersecting)return;
+    e.target.classList.add('in');io.unobserve(e.target);
+    if(e.target.classList.contains('stats'))countUp(e.target);
+  }),{rootMargin:'0px 0px -8% 0px'});
+  items.forEach(el=>io.observe(el));
+  // stats: count numeric values up from 0 (text like "ACCA" is left as is)
+  function countUp(box){
+    box.querySelectorAll('.stat b').forEach(b=>{
+      const m=b.textContent.match(/^(\d+)(.*)$/);if(!m)return;
+      const end=+m[1],suf=m[2],t0=performance.now(),dur=1200;
+      const step=t=>{const k=Math.min((t-t0)/dur,1),v=Math.round(end*(1-Math.pow(1-k,3)));b.textContent=v+suf;if(k<1)requestAnimationFrame(step)};
+      b.textContent='0'+suf;requestAnimationFrame(step);
+    });
+  }
+})();
 </script>
 
 </body>
