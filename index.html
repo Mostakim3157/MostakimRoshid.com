@@ -342,7 +342,7 @@ document.getElementById('year').textContent=new Date().getFullYear();
 if(matchMedia('(hover:hover)').matches)document.querySelectorAll('.card:not(form)').forEach(c=>c.addEventListener('pointermove',e=>{
   const r=c.getBoundingClientRect();c.style.setProperty('--mx',e.clientX-r.left+'px');c.style.setProperty('--my',e.clientY-r.top+'px');
 }));
-// scroll reveal: tag targets, stagger siblings, reveal each once as it enters the viewport
+// scroll reveal: tag targets, stagger siblings, animate each time it scrolls into view from below
 (()=>{
   const root=document.documentElement;
   if(!root.classList.contains('anim'))return;
@@ -370,11 +370,17 @@ if(matchMedia('(hover:hover)').matches)document.querySelectorAll('.card:not(form
   const items=document.querySelectorAll('.rv');
   if(!('IntersectionObserver' in window)){items.forEach(el=>el.classList.add('in'));return}
   const io=new IntersectionObserver(es=>es.forEach(e=>{
-    if(!e.isIntersecting)return;
-    e.target.classList.add('in');io.unobserve(e.target);
-    e.target.querySelectorAll('.split').forEach(h=>h.classList.add('go'));
+    const heads=e.target.querySelectorAll('.split');
+    if(e.isIntersecting){e.target.classList.add('in');heads.forEach(h=>h.classList.add('go'))}
+    // reset only once it has dropped below the viewport (user scrolled back up), so it replays on the next scroll down
+    else if(e.boundingClientRect.top>0){e.target.classList.remove('in');heads.forEach(h=>h.classList.remove('go'))}
   }),{rootMargin:'0px 0px -8% 0px'});
   items.forEach(el=>io.observe(el));
+  // jumps (menu links, back to top) skip the observer, so also reset anything that is now fully below the viewport
+  let tick=false;
+  addEventListener('scroll',()=>{if(tick)return;tick=true;requestAnimationFrame(()=>{tick=false;
+    items.forEach(el=>{if(el.classList.contains('in')&&el.getBoundingClientRect().top>innerHeight){el.classList.remove('in');el.querySelectorAll('.split').forEach(h=>h.classList.remove('go'))}});
+  })},{passive:true});
 })();
 </script>
 
