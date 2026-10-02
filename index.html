@@ -120,9 +120,8 @@ section{padding:88px 0}
 .tag{padding:6px 13px;font-size:.86rem;border:1px solid var(--glass-line-strong);border-radius:8px;color:var(--soft);background:var(--glass-chip)}
 
 .proj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-.proj{overflow:hidden;display:flex;flex-direction:column;position:relative;transition:border-color .2s,transform .2s}
-.proj:hover{border-color:var(--line-strong);transform:translateY(-2px)}
-.proj::before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:linear-gradient(90deg,var(--blue),var(--ice))}
+.proj{overflow:hidden;display:flex;flex-direction:column;position:relative}
+.proj::before{content:"";position:absolute;z-index:1;left:0;right:0;top:0;height:3px;background:linear-gradient(90deg,var(--blue),var(--ice))}
 .proj svg{display:block;width:100%;aspect-ratio:16/9;max-width:100%}
 .proj-body{padding:22px 24px 26px;display:flex;flex-direction:column;gap:10px;flex:1}
 .proj-body h3{font-size:1.12rem}
@@ -204,6 +203,20 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px}
 .anim .hero h1.split{--b:250ms}
 .anim .rv:not(.in) .eyebrow{opacity:0}
 .anim .rv.in .eyebrow{animation:trackIn 1s cubic-bezier(.2,.7,.2,1) backwards}
+/* card hover (mouse/trackpad only): lift, ice border + blue glow, and a spotlight that follows the cursor (--mx/--my set in JS) */
+@media (hover:hover){
+  .card:not(form){position:relative;transition:transform .35s cubic-bezier(.2,.7,.2,1),border-color .35s,box-shadow .35s,background-color .35s}
+  .card:not(form)::after{content:"";position:absolute;inset:0;z-index:-1;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .35s;background:radial-gradient(360px circle at var(--mx,50%) var(--my,50%),rgba(187,225,250,.13),transparent 65%)}
+  .card:not(form):hover{border-color:rgba(187,225,250,.32);background-color:rgba(255,255,255,.07);box-shadow:0 22px 44px -22px rgba(0,0,0,.7),0 0 36px -8px rgba(50,130,184,.4)}
+  .card:not(form):hover::after{opacity:1}
+  .sk h3 svg,.exp-logo,.cline i,.proj svg{transition:transform .4s cubic-bezier(.2,.7,.2,1)}
+}
+@media (hover:hover) and (prefers-reduced-motion:no-preference){
+  .card:not(form):hover{transform:translateY(-6px)}
+  .sk:hover h3 svg{transform:scale(1.15) rotate(-6deg)}
+  .exp:hover .exp-logo,.cline:hover i{transform:scale(1.08) rotate(-4deg)}
+  .proj:hover svg{transform:scale(1.04)}
+}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important}html{scroll-behavior:auto}}
 </style>
 </head>
@@ -306,6 +319,10 @@ form.addEventListener('submit',async e=>{
   }
 });
 document.getElementById('year').textContent=new Date().getFullYear();
+// card spotlight follows the pointer
+if(matchMedia('(hover:hover)').matches)document.querySelectorAll('.card:not(form)').forEach(c=>c.addEventListener('pointermove',e=>{
+  const r=c.getBoundingClientRect();c.style.setProperty('--mx',e.clientX-r.left+'px');c.style.setProperty('--my',e.clientY-r.top+'px');
+}));
 // scroll reveal: tag targets, stagger siblings, reveal each once as it enters the viewport
 (()=>{
   const root=document.documentElement;
