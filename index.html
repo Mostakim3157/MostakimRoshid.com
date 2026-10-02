@@ -178,11 +178,13 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px}
 }
 @media (max-width:640px){.proj-grid,.notes{grid-template-columns:1fr}
   /* hero buttons share one row on phones: Download resume left, Hire me right */
-  .btns{flex-wrap:nowrap;gap:10px}
-  .btns .btn{flex:1 1 0;justify-content:center;padding:14px 10px;font-size:.92rem;white-space:nowrap}
+  .btns{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .btns .btn{justify-content:center;gap:6px;padding:14px 8px;font-size:.84rem;white-space:nowrap}
+  .btns .btn svg{flex-shrink:0}
   .btns .btn-g{order:-1}
 }
-@media (max-width:360px){.btns .btn{gap:6px;padding:13px 8px;font-size:.84rem}}
+@media (max-width:399px){.btns .btn{padding:14px 6px}.btns .btn svg{display:none}}
+@media (max-width:340px){.btns .btn{font-size:.78rem}}
 /* animations: hero plays on load; everything marked .rv fades in once it scrolls into view (only when JS adds .anim and motion isn't reduced) */
 @keyframes rvUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
 @keyframes rvCard{from{opacity:0;transform:translateY(36px) scale(.97)}to{opacity:1;transform:none}}
