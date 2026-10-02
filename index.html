@@ -58,7 +58,7 @@ header{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:rg
 .status{display:inline-flex;gap:8px;align-items:center;padding:6px 14px;border:1px solid var(--glass-line);border-radius:999px;font-size:.84rem;color:var(--soft);background:var(--glass-chip)}
 .status i{width:8px;height:8px;border-radius:50%;background:var(--ice);box-shadow:0 0 0 4px rgba(187,225,250,.18)}
 .hero h1{font-size:clamp(2.6rem,7vw,5.2rem);margin:20px 0 14px;font-weight:700}
-.hero h1 span{color:var(--blue)}
+.hero h1 .accent{color:var(--blue)}
 .roles{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin-bottom:22px;list-style:none}
 .roles li{padding:7px 16px;border-radius:999px;border:1px solid var(--glass-line);font-size:.9rem;color:var(--soft);background:var(--glass-chip)}
 .roles li:first-child{border-color:var(--blue);color:var(--ice)}
@@ -193,6 +193,17 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px}
 .anim .rv-card.in{animation-name:rvCard}
 .anim .rv-left.in{animation-name:rvLeft}
 .anim .rv-right.in{animation-name:rvRight}
+/* heading typography: words rise from behind a mask one after another; eyebrow labels tighten their tracking */
+@keyframes wordUp{from{transform:translateY(110%)}to{transform:none}}
+@keyframes trackIn{from{opacity:0;letter-spacing:.6em}to{opacity:1;letter-spacing:.14em}}
+.anim .split .w{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.12em;margin-bottom:-.12em}
+.anim .split .w>span{display:inline-block}
+.anim .split:not(.go) .w>span{transform:translateY(110%)}
+.anim .split.go .w>span{animation:wordUp .85s cubic-bezier(.2,.7,.2,1) calc(var(--b,0ms) + var(--wi)*70ms) backwards}
+.anim .hero h1{animation:none}
+.anim .hero h1.split{--b:250ms}
+.anim .rv:not(.in) .eyebrow{opacity:0}
+.anim .rv.in .eyebrow{animation:trackIn 1s cubic-bezier(.2,.7,.2,1) backwards}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important}html{scroll-behavior:auto}}
 </style>
 </head>
@@ -214,7 +225,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px}
   <div class="wrap">
     <div class="avatar"><div><img src="images/mostakim-roshid.jpg" alt="Mostakim Roshid" width="480" height="480"></div></div>
     <span class="status"><i></i>Open to ERP consulting projects</span>
-    <h1>Mostakim <span>Roshid</span></h1>
+    <h1>Mostakim <span class="accent">Roshid</span></h1>
     <ul class="roles" aria-label="Roles"><li>ERP &amp; Odoo Specialist</li><li>Business Process Analyst</li><li>Reporting &amp; BI</li><li>Business Strategy</li></ul>
     <p class="sum">I help businesses turn messy daily operations into clean systems — implementing Odoo ERP, mapping processes, and building reports management can decide with.</p>
     <div class="btns">
@@ -299,6 +310,22 @@ document.getElementById('year').textContent=new Date().getFullYear();
 (()=>{
   const root=document.documentElement;
   if(!root.classList.contains('anim'))return;
+  // split headings into masked words (keeps inner elements like the blue "Roshid" span)
+  let wi;
+  const splitText=n=>{[...n.childNodes].forEach(c=>{
+    if(c.nodeType===1){splitText(c);return}
+    if(c.nodeType!==3)return;
+    const f=document.createDocumentFragment();
+    c.textContent.split(/(\s+)/).forEach(t=>{
+      if(!t)return;
+      if(/^\s+$/.test(t)){f.append(t);return}
+      const w=document.createElement('span'),i=document.createElement('span');
+      w.className='w';i.textContent=t;i.style.setProperty('--wi',wi++);w.append(i);f.append(w);
+    });
+    c.replaceWith(f);
+  })};
+  document.querySelectorAll('.hero h1, .sec-head h2, .contact-grid h2').forEach(h=>{wi=0;splitText(h);h.classList.add('split')});
+  requestAnimationFrame(()=>document.querySelector('.hero h1')?.classList.add('go'));
   const tag=(sel,cls,step)=>document.querySelectorAll(sel).forEach((el,i)=>{el.classList.add('rv',...(cls?[cls]:[]));if(step)el.style.setProperty('--d',Math.min(i,5)*step+'ms')});
   tag('.sec-head');
   tag('.stats','rv-card');
@@ -310,6 +337,7 @@ document.getElementById('year').textContent=new Date().getFullYear();
   const io=new IntersectionObserver(es=>es.forEach(e=>{
     if(!e.isIntersecting)return;
     e.target.classList.add('in');io.unobserve(e.target);
+    e.target.querySelectorAll('.split').forEach(h=>h.classList.add('go'));
     if(e.target.classList.contains('stats'))countUp(e.target);
   }),{rootMargin:'0px 0px -8% 0px'});
   items.forEach(el=>io.observe(el));
