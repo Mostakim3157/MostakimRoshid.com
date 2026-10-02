@@ -235,7 +235,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px}
   .proj:hover svg{transform:scale(1.04)}
 }
 /* faint tool logos behind the page in brand colors: fixed, slow float (React spins) */
-.bg-logos{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
+.bg-logos{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden;filter:blur(3px)}
+@media (max-width:640px){.bg-logos{filter:blur(2px)}}
 .bg-logos .lg{position:absolute;left:var(--x);top:var(--y);width:var(--s);height:var(--s);transform:translate(-50%,-50%) rotate(var(--r));color:var(--c);opacity:var(--o);fill:currentColor}
 /* phones: keep logos along the left/right edges so they don't sit behind text */
 @media (max-width:640px){.bg-logos .lg{left:var(--mx);top:var(--my);width:calc(var(--s)*.62);height:calc(var(--s)*.62)}}
