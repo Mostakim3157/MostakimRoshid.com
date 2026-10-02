@@ -146,6 +146,10 @@ section{padding:88px 0}
 .cline span{font-weight:600;word-break:break-word;user-select:all}
 .cline i{width:38px;height:38px;flex-shrink:0;display:grid;place-items:center;border-radius:10px;background:rgba(50,130,184,.16);color:var(--ice)}
 .cline i svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.cline i svg.fill{width:17px;height:17px;fill:currentColor;stroke:none}
+a.cline span{user-select:auto}
+@media (max-width:480px){.cline{gap:12px;padding:14px}.cline span{font-size:.88rem;word-break:normal;overflow-wrap:anywhere}}
+@media (max-width:374px){.cline span{font-size:.8rem}}
 form{padding:32px;display:grid;gap:18px}
 label{font-size:.9rem;font-weight:600;display:grid;gap:8px}
 input,textarea{width:100%;font:inherit;font-weight:400;color:var(--text);background:rgba(0,0,0,.18);border:1px solid var(--glass-line);border-radius:10px;padding:12px 14px;transition:border-color .2s}
@@ -255,7 +259,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px}
       <a href="#contact" class="btn btn-p">Hire me <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
       <a href="files/Mostakim-Roshid-CV.pdf" class="btn btn-g" download="Mostakim-Roshid-CV.pdf" type="application/pdf"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0-4-4m4 4 4-4M5 21h14"/></svg><span class="lbl-long">Download resume</span><span class="lbl-short">Resume</span></a>
     </div>
-    <div class="socials"><a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg></a><a href="#" aria-label="GitHub"><svg viewBox="0 0 24 24"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 0-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.2.5-2.3 1.3-3.1-.2-.4-.6-1.6 0-3.2 0 0 1-.3 3.4 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.8 0 3.2.9.8 1.3 1.9 1.3 3.2 0 4.6-2.8 5.6-5.5 5.9.5.4.9 1.1.9 2.2v3.3c0 .3.1.7.8.6A12 12 0 0 0 12 .3"/></svg></a><a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.79-4.69 4.53-4.69 1.31 0 2.68.24 2.68.24v2.97h-1.51c-1.49 0-1.96.93-1.96 1.89v2.25h3.33l-.53 3.49h-2.8V24C19.61 23.1 24 18.1 24 12.07"/></svg></a><a href="#contact" aria-label="Email"><svg viewBox="0 0 24 24"><path d="M2 5.5A1.5 1.5 0 0 1 3.5 4h17A1.5 1.5 0 0 1 22 5.5v13a1.5 1.5 0 0 1-1.5 1.5h-17A1.5 1.5 0 0 1 2 18.5v-13zm2 .9v.3l8 5.3 8-5.3v-.3H4zm16 2.7-7.45 4.94a1 1 0 0 1-1.1 0L4 9.1V18h16V9.1z"/></svg></a></div>
+    <div class="socials"><a href="https://www.linkedin.com/in/motakim-roshid" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg></a><a href="https://github.com/Mostakim3157" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 24 24"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 0-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.2.5-2.3 1.3-3.1-.2-.4-.6-1.6 0-3.2 0 0 1-.3 3.4 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.8 0 3.2.9.8 1.3 1.9 1.3 3.2 0 4.6-2.8 5.6-5.5 5.9.5.4.9 1.1.9 2.2v3.3c0 .3.1.7.8.6A12 12 0 0 0 12 .3"/></svg></a><a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.79-4.69 4.53-4.69 1.31 0 2.68.24 2.68.24v2.97h-1.51c-1.49 0-1.96.93-1.96 1.89v2.25h3.33l-.53 3.49h-2.8V24C19.61 23.1 24 18.1 24 12.07"/></svg></a><a href="mailto:contact@mostakimroshid.com" aria-label="Email"><svg viewBox="0 0 24 24"><path d="M2 5.5A1.5 1.5 0 0 1 3.5 4h17A1.5 1.5 0 0 1 22 5.5v13a1.5 1.5 0 0 1-1.5 1.5h-17A1.5 1.5 0 0 1 2 18.5v-13zm2 .9v.3l8 5.3 8-5.3v-.3H4zm16 2.7-7.45 4.94a1 1 0 0 1-1.1 0L4 9.1V18h16V9.1z"/></svg></a></div>
   </div>
 </section>
 
@@ -291,7 +295,9 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px}
     <div class="eyebrow">Contact</div>
     <h2>Have a business problem?</h2>
     <p class="lead">Whether it's an Odoo setup, a messy process or a report you need every morning, send me a message and I'll get back to you.</p>
-    <div class="cline card"><i><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></i><div><small>Email</small><span>hello@mostakimroshid.com</span></div></div>
+    <a class="cline card" href="mailto:contact@mostakimroshid.com"><i><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></i><div><small>Email</small><span>contact<wbr>@mostakimroshid.com</span></div></a>
+    <a class="cline card" href="https://www.linkedin.com/in/motakim-roshid" target="_blank" rel="noopener"><i><svg class="fill" viewBox="0 0 24 24"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg></i><div><small>LinkedIn</small><span>linkedin.com/in/<wbr>motakim-roshid</span></div></a>
+    <a class="cline card" href="https://github.com/Mostakim3157" target="_blank" rel="noopener"><i><svg class="fill" viewBox="0 0 24 24"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 0-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.2.5-2.3 1.3-3.1-.2-.4-.6-1.6 0-3.2 0 0 1-.3 3.4 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.8 0 3.2.9.8 1.3 1.9 1.3 3.2 0 4.6-2.8 5.6-5.5 5.9.5.4.9 1.1.9 2.2v3.3c0 .3.1.7.8.6A12 12 0 0 0 12 .3"/></svg></i><div><small>GitHub</small><span>github.com/Mostakim3157</span></div></a>
     <div class="cline card"><i><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></i><div><small>Location</small><span>Narayanganj, Bangladesh</span></div></div>
   </div>
   <form class="card" id="contactForm" novalidate>
@@ -324,7 +330,7 @@ form.addEventListener('submit',async e=>{
     await db.doc('messages/'+id).set({name:String(fd.get('name')||''),email:String(fd.get('email')||''),message:String(fd.get('message')||''),sentAt:new Date().toISOString()});
     note.textContent='Message sent. I\u2019ll reply soon.';form.reset();
   }catch{
-    note.textContent='Message not sent. Email me directly at hello@mostakimroshid.com.';
+    note.textContent='Message not sent. Email me directly at contact@mostakimroshid.com.';
   }
 });
 document.getElementById('year').textContent=new Date().getFullYear();
