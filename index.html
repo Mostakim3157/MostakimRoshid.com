@@ -44,7 +44,7 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;ba
 
 /* header */
 header{position:relative;z-index:50;padding-top:calc(14px + env(safe-area-inset-top,0px))}
-.nav{position:relative;display:flex;align-items:center;justify-content:space-between;height:68px;padding-inline:22px}
+.nav{position:relative;display:flex;align-items:center;justify-content:space-between;height:56px;padding-inline:22px}
 /* glass box like the cards; it lives on a pseudo layer because a backdrop-filter on .nav itself would stop the mobile menu's blur from reaching the page */
 .nav::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--glass);border:1px solid var(--glass-line);border-radius:18px;-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
 .logo{font-family:var(--display);font-weight:700;font-size:1.2rem;display:flex;align-items:center;gap:10px}
@@ -63,7 +63,7 @@ header{position:relative;z-index:50;padding-top:calc(14px + env(safe-area-inset-
 .menu-btn[aria-expanded="true"] span:nth-child(3){transform:rotate(-45deg)}
 
 /* hero */
-.hero{padding:80px 0 64px;text-align:center;position:relative;overflow:hidden}
+.hero{padding:60px 0 64px;text-align:center;position:relative;overflow:hidden}
 .hero::before{content:"";position:absolute;left:50%;top:-180px;width:900px;max-width:140%;height:600px;transform:translateX(-50%);background:radial-gradient(closest-side,rgba(50,130,184,.24),transparent);pointer-events:none}
 .hero::after{content:"";position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:56px 56px;-webkit-mask-image:radial-gradient(ellipse at 50% 30%,#000 30%,transparent 75%);mask-image:radial-gradient(ellipse at 50% 30%,#000 30%,transparent 75%)}
 .hero .wrap{position:relative;z-index:1}
@@ -228,7 +228,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px}
   .nav ul.open li{opacity:1;transform:none}
   .nav ul.open li:nth-child(2){transition-delay:.04s}.nav ul.open li:nth-child(3){transition-delay:.08s}.nav ul.open li:nth-child(4){transition-delay:.12s}.nav ul.open li:nth-child(5){transition-delay:.16s}.nav ul.open li:nth-child(6){transition-delay:.2s}
   section{padding:60px 0}
-  .hero{padding:40px 0 48px}
+  .hero{padding:20px 0 48px}
   .hero-grid{grid-template-columns:1fr;gap:0}
   .hero-text{display:contents}
   .hero-grid>.btns{order:1}
@@ -302,10 +302,10 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px}
 .bg-logos .lg{position:absolute;left:var(--x);top:var(--y);width:var(--s);height:var(--s);transform:translate(-50%,-50%) rotate(var(--r));color:var(--c);opacity:var(--o);fill:currentColor}
 /* phones: keep logos along the left/right edges so they don't sit behind text */
 /* phones: a column of four logos on each side of the photo; the photo leaves 38px side lanes for them
-   (photo top = 82px header + 40px padding = 122px; photo is min(360px, 100vw - 108px) square) */
+   (photo top = 70px header + 20px padding = 90px; photo is min(360px, 100vw - 108px) square) */
 @media (max-width:640px){
   .hero .hero-photo{width:min(360px, 100vw - 108px)}
-  .bg-logos{--pt:122px;--ph:min(360px, 100vw - 108px)}
+  .bg-logos{--pt:90px;--ph:min(360px, 100vw - 108px)}
   .bg-logos .lg{left:var(--mx);top:var(--my);width:26px;height:26px}
 }
 @media (prefers-reduced-motion:no-preference){
