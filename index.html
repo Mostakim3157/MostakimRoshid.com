@@ -99,6 +99,15 @@ header{position:relative;z-index:50;padding-top:calc(14px + env(safe-area-inset-
 .roles{display:flex;justify-content:flex-start;flex-wrap:wrap;gap:10px;margin-bottom:22px;list-style:none}
 .roles li{padding:6px 14px;border-radius:999px;border:1px solid var(--glass-line);font-size:.86rem;color:var(--soft);background:var(--glass-chip)}
 .roles li:first-child{border-color:var(--blue);color:var(--ice)}
+/* below 1100px: chips in two lines of two; sizes in em so a line (~27.7em for the longer pair) scales with the available width, never under 11px */
+@media (max-width:1099px){
+  .roles{gap:.73em;font-size:clamp(11px,calc((100vw - 34px) / 27.8),.86rem);max-width:28.6em}
+  .roles li{font-size:1em;padding:.44em 1.02em;white-space:nowrap}
+}
+@media (min-width:821px) and (max-width:1099px){
+  .hero-text{container-type:inline-size}
+  .roles{font-size:clamp(11px,3.59cqi,.86rem)}
+}
 /* desktop: chips on one line; sizes in em so the whole row scales with the text column (row is ~48em wide) */
 @media (min-width:1100px){
   .hero-text{container-type:inline-size}
@@ -228,6 +237,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px}
   .hero-photo figcaption{left:16px;right:16px;bottom:14px;font-size:.68rem;letter-spacing:.12em;white-space:nowrap}
   .hero-text{text-align:center}
   .roles,.socials{justify-content:center}
+  .roles{margin-inline:auto}
   .sum{margin-inline:auto}
   .about-grid,.exp,.skills,.contact-grid{grid-template-columns:1fr}
   .exp{gap:20px;padding:24px}
