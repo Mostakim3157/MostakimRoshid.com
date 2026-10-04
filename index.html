@@ -80,12 +80,12 @@ header{position:relative;z-index:50;padding-top:calc(14px + env(safe-area-inset-
 .hero-photo figcaption{position:absolute;left:22px;right:22px;bottom:18px;z-index:2;display:flex;justify-content:space-between;gap:12px;font-family:var(--display);font-size:.8rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--soft)}
 .hero h1{margin:0 0 20px;font-weight:700;line-height:1.08}
 /* tagline in two lines: smaller lead-in, larger accent line */
-.hero h1 .h1-lead{display:block;font-size:clamp(1.3rem,2.5vw,2.25rem);font-weight:600;letter-spacing:-.015em}
+.hero h1 .h1-lead{display:block;font-size:clamp(1.56rem,3vw,2.7rem);text-wrap:balance;font-weight:600;letter-spacing:-.015em}
 .hero h1 .h1-main{display:block;font-size:clamp(2.6rem,6.2vw,5.4rem);line-height:1;margin-top:.12em}
-/* size each line from the column width so line 1 and line 2 never wrap (text is ~18em and ~8.6em wide) */
+/* size each line from the column width; line 2 never wraps (~8.6em wide), line 1 is 20% larger and wraps evenly onto two lines */
 @supports (container-type:inline-size){
   .hero h1{container-type:inline-size}
-  .hero h1 .h1-lead{font-size:min(2.25rem,5.3cqi);white-space:nowrap}
+  .hero h1 .h1-lead{font-size:min(2.7rem,6.36cqi)}
   .hero h1 .h1-main{font-size:min(5.4rem,11.2cqi);white-space:nowrap}
 }
 .hero h1 .accent{color:var(--blue)}
