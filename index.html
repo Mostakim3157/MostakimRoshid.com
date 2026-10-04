@@ -76,9 +76,7 @@ header{position:relative;z-index:50;padding-top:calc(14px + env(safe-area-inset-
 .hero-photo img{width:100%;height:100%;object-fit:cover}
 .hero-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(15,24,30,.85),transparent 38%);pointer-events:none}
 .hero-photo figcaption{position:absolute;left:22px;right:22px;bottom:18px;z-index:2;display:flex;justify-content:space-between;gap:12px;font-family:var(--display);font-size:.8rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--soft)}
-.status{display:inline-flex;gap:8px;align-items:center;padding:6px 14px;border:1px solid var(--glass-line);border-radius:999px;font-size:.84rem;color:var(--soft);background:var(--glass-chip)}
-.status i{width:8px;height:8px;border-radius:50%;background:var(--ice);box-shadow:0 0 0 4px rgba(187,225,250,.18)}
-.hero h1{font-size:clamp(2.6rem,6.4vw,5.4rem);margin:22px 0 18px;font-weight:700;line-height:1.02}
+.hero h1{font-size:clamp(2.2rem,4.6vw,3.9rem);margin:0 0 20px;font-weight:700;line-height:1.08;max-width:16ch}
 .hero h1 .accent{color:var(--blue)}
 .roles{display:flex;justify-content:flex-start;flex-wrap:wrap;gap:10px;margin-bottom:22px;list-style:none}
 .roles li{padding:6px 14px;border-radius:999px;border:1px solid var(--glass-line);font-size:.86rem;color:var(--soft);background:var(--glass-chip)}
@@ -200,7 +198,6 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px}
   .hero{padding:40px 0 48px}
   .hero-grid{grid-template-columns:1fr;gap:0}
   .hero-text{display:contents}
-  .hero-text>.status{justify-self:center}
   .hero-grid>.btns{order:1}
   .hero-meta,.socials{order:2}
   .hero-photo{order:-1;justify-self:center;max-width:300px;margin-bottom:30px}
@@ -299,8 +296,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px}
 <section class="hero" id="home">
   <div class="wrap hero-grid">
     <div class="hero-text">
-      <span class="status"><i></i>Open to ERP consulting projects</span>
-      <h1>Mostakim <span class="accent">Roshid</span></h1>
+      <h1>Turning business challenges into <span class="accent">simple systems</span></h1>
       <ul class="roles" aria-label="Roles"><li>ERP &amp; Odoo Specialist</li><li>Business Process Analyst</li><li>Reporting &amp; BI</li><li>Business Strategy</li></ul>
       <p class="sum">I help businesses turn messy daily operations into clean systems — implementing Odoo ERP, mapping processes, and building reports management can decide with.</p>
       <ul class="hero-meta"><li>Based in Bangladesh</li><li>Working across ERP, operations &amp; reporting</li></ul>
