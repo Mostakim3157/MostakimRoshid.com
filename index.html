@@ -219,6 +219,9 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px}
 @media (max-width:820px){
   .wrap{width:calc(100% - 32px)}
   .menu-btn{display:grid}
+  /* side gaps match top gaps: menu button 7px all round ((56-42)/2), logo badge 12px ((56-32)/2) */
+  .nav{padding-inline:7px}
+  .logo{margin-left:5px}
   /* mobile menu: floating glass panel under the button, scales in from the top-right corner */
   .nav ul{position:absolute;top:calc(100% + 10px);right:0;width:max-content;min-width:180px;max-width:calc(100vw - 32px);flex-direction:column;align-items:stretch;gap:0;padding:6px;border-radius:16px;border:1px solid var(--glass-line);background:rgba(33,48,57,.72);backdrop-filter:blur(20px) saturate(140%);-webkit-backdrop-filter:blur(20px) saturate(140%);box-shadow:0 24px 48px -16px rgba(0,0,0,.6);transform-origin:top right;opacity:0;visibility:hidden;transform:translateY(-8px) scale(.95);transition:opacity .25s,transform .3s cubic-bezier(.2,.7,.2,1),visibility 0s .3s}
   .nav ul.open{opacity:1;visibility:visible;transform:none;transition:opacity .25s,transform .3s cubic-bezier(.2,.7,.2,1)}
