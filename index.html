@@ -66,8 +66,10 @@ header{position:relative;z-index:50;padding-top:calc(14px + env(safe-area-inset-
 @media (min-width:821px){
   .hero-grid{grid-template-areas:"text ." "text photo" "text btns" "text .";grid-template-rows:1fr auto auto 1fr;row-gap:0}
   .hero-text{grid-area:text}
-  .hero-photo{grid-area:photo}
-  .hero-grid>.btns{grid-area:btns;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;width:100%;max-width:400px;justify-self:end;margin-top:20px}
+  /* photo 20% larger (400 → 480px) where there's room, and lifted a little */
+  .hero-grid{grid-template-columns:minmax(0,1fr) minmax(0,clamp(400px,38vw,480px))}
+  .hero-grid>.hero-photo{grid-area:photo;max-width:480px;margin-top:-40px}
+  .hero-grid>.btns{grid-area:btns;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;width:100%;max-width:480px;justify-self:end;margin-top:20px}
   .hero-grid>.btns .btn{justify-content:center;padding-inline:10px;white-space:nowrap}
   .hero-grid>.btns .btn svg{flex-shrink:0}
 }
