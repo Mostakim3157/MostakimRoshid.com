@@ -8,11 +8,18 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <title>Mostakim Roshid</title>
 <meta name="description" content="Mostakim Roshid — ERP and Odoo specialist, business process analyst and reporting analyst from Bangladesh.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" href="fonts/space-grotesk-700.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/space-grotesk-600.woff2" as="font" type="font/woff2" crossorigin>
 <script>if(!matchMedia("(prefers-reduced-motion: reduce)").matches)document.documentElement.classList.add("anim")</script>
 <style>
+/* fonts are served from this site (not Google Fonts) so every visitor gets the same type; licenses in fonts/ */
+@font-face{font-family:"Inter";font-style:normal;font-weight:400;font-display:swap;src:url(fonts/inter-400.woff2) format("woff2")}
+@font-face{font-family:"Inter";font-style:normal;font-weight:500;font-display:swap;src:url(fonts/inter-500.woff2) format("woff2")}
+@font-face{font-family:"Inter";font-style:normal;font-weight:600;font-display:swap;src:url(fonts/inter-600.woff2) format("woff2")}
+@font-face{font-family:"Inter";font-style:normal;font-weight:700;font-display:swap;src:url(fonts/inter-700.woff2) format("woff2")}
+@font-face{font-family:"Space Grotesk";font-style:normal;font-weight:500;font-display:swap;src:url(fonts/space-grotesk-500.woff2) format("woff2")}
+@font-face{font-family:"Space Grotesk";font-style:normal;font-weight:600;font-display:swap;src:url(fonts/space-grotesk-600.woff2) format("woff2")}
+@font-face{font-family:"Space Grotesk";font-style:normal;font-weight:700;font-display:swap;src:url(fonts/space-grotesk-700.woff2) format("woff2")}
 /* Layout: centered hero with photo ring + role chips, solid-card sections. Single dark "Ocean Blue" look. */
 :root{
   --bg:#1B262C; --surface:#213039; --sunken:#18222A; --chip:#1E2B32;
@@ -307,7 +314,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px}
 <section class="hero" id="home">
   <div class="wrap hero-grid">
     <div class="hero-text">
-      <h1><span class="h1-lead">Turning business challenges into</span> <span class="h1-main accent">simple systems</span></h1>
+      <h1><span class="h1-lead">Turning business<br>challenges into</span> <span class="h1-main accent">simple systems</span></h1>
       <ul class="roles" aria-label="Roles"><li>ERP &amp; Odoo Specialist</li><li>Business Process Analyst</li><li>Reporting &amp; BI</li><li>Business Strategy</li></ul>
       <p class="sum">I help businesses turn messy daily operations into clean systems — implementing Odoo ERP, mapping processes, and building reports management can decide with.</p>
       <ul class="hero-meta"><li>Based in Bangladesh</li><li>Working across ERP, operations &amp; reporting</li></ul>
